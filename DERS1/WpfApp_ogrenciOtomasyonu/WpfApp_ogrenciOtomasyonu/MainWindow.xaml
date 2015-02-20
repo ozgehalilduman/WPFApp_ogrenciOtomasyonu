@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <DataGrid x:Name="dataGrid_ogrler" Margin="10,42,10,0" Loaded="dataGrid_ogrler_Loaded" Height="177" VerticalAlignment="Top" AutoGenerateColumns="False">
+        <DataGrid x:Name="dataGrid_ogrler" Margin="6,47,14,42" Loaded="dataGrid_ogrler_Loaded" AutoGenerateColumns="False">
             <DataGrid.AlternatingRowBackground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFC8CBE8" Offset="0"/>
@@ -21,13 +21,12 @@
                 <DataGridTextColumn Binding="{Binding Soyad}" ClipboardContentBinding="{x:Null}" Header="SOYADI"/>
                 <DataGridTextColumn Binding="{Binding Sinif}" ClipboardContentBinding="{x:Null}" Header="SINIF"/>
                 <DataGridTextColumn Binding="{Binding TcNo}" ClipboardContentBinding="{x:Null}" Header="TC KİMLİK"/>
-                <DataGridComboBoxColumn x:Name="CinsiyetComboBox" ClipboardContentBinding="{x:Null}" Header="CİNSİYET" SelectedValueBinding="{Binding Cinsiyet,Mode=TwoWay}" SelectedItemBinding="{Binding Cinsiyet}" TextBinding="{Binding Cinsiyet}"/>
+                <DataGridComboBoxColumn x:Name="CinsiyetComboBox" ClipboardContentBinding="{x:Null}" Header="CİNSİYET"  SelectedItemBinding="{Binding Cinsiyet}" />
                 <DataGridTextColumn Binding="{Binding Boy}" ClipboardContentBinding="{x:Null}" Header="BOY"/>
                 <DataGridTextColumn Binding="{Binding Kilo}" ClipboardContentBinding="{x:Null}" Header="KİLO"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label x:Name="label" Content="OGRENCI LISTESI" HorizontalAlignment="Left" Margin="6,-3,0,0" FontWeight="Thin" FontFamily="Bombing" FontSize="32" Width="209" Height="45" VerticalAlignment="Top"/>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="364,11,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
 
     </Grid>
 </Window>

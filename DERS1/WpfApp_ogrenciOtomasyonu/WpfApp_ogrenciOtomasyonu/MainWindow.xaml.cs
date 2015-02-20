@@ -32,9 +32,5 @@ namespace WpfApp_ogrenciOtomasyonu
             CinsiyetComboBox.ItemsSource = ogr.cinsiyetListesi();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("deneme");
-        }
     }
 }
