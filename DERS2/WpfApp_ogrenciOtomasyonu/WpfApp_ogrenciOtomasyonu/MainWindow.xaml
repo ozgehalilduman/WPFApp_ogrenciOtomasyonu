@@ -1,0 +1,81 @@
+﻿<Window x:Class="WpfApp_ogrenciOtomasyonu.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp_ogrenciOtomasyonu"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" SizeToContent="WidthAndHeight" Margin="0">
+    <Grid>
+        <DataGrid x:Name="dataGrid_ogrler" Margin="6,47,14,10" Loaded="dataGrid_ogrler_Loaded" AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False" SelectionChanged="dataGrid_ogrler_SelectionChanged">
+            <DataGrid.AlternatingRowBackground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFC8CBE8" Offset="0"/>
+                    <GradientStop Color="#FF6FC3E2" Offset="1"/>
+                </LinearGradientBrush>
+            </DataGrid.AlternatingRowBackground>
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
+                <DataGridTextColumn Binding="{Binding Okulno}" ClipboardContentBinding="{x:Null}" Header="OKULNO"/>
+                <DataGridTextColumn Binding="{Binding Ad }" ClipboardContentBinding="{x:Null}" Header="ADI"/>
+                <DataGridTextColumn Binding="{Binding Soyad}" ClipboardContentBinding="{x:Null}" Header="SOYADI"/>
+                <DataGridTextColumn Binding="{Binding Sinif}" ClipboardContentBinding="{x:Null}" Header="SINIF"/>
+                <DataGridTextColumn Binding="{Binding TcNo}" ClipboardContentBinding="{x:Null}" Header="TC KİMLİK"/>
+                <DataGridComboBoxColumn x:Name="CinsiyetComboBox" ClipboardContentBinding="{x:Null}" Header="CİNSİYET"  SelectedItemBinding="{Binding Cinsiyet}" />
+                <DataGridTextColumn Binding="{Binding Boy}" ClipboardContentBinding="{x:Null}" Header="BOY"/>
+                <DataGridTextColumn Binding="{Binding Kilo}" ClipboardContentBinding="{x:Null}" Header="KİLO"/>
+                <DataGridTemplateColumn ClipboardContentBinding="{x:Null}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Sil" Click="kayit_sil"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn ClipboardContentBinding="{x:Null}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Düzenle" Click="kayit_duzenle"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label x:Name="label" Content="OGRENCI LISTESI" HorizontalAlignment="Left" Margin="6,-3,0,0" FontWeight="Thin" FontFamily="Bombing" FontSize="32" Width="209" Height="45" VerticalAlignment="Top"/>
+        <Button x:Name="btn_ayarlar" Content="" VerticalAlignment="Top" Height="30" HorizontalAlignment="Right" Width="32" RenderTransformOrigin="0.652,0.911" Click="btn_ayarlar_Click" BorderBrush="{x:Null}">
+            <Button.Foreground>
+                <ImageBrush ImageSource="setting.png"/>
+            </Button.Foreground>
+            <Button.Background>
+                <ImageBrush ImageSource="setting.png"/>
+            </Button.Background>
+        </Button>
+        <StackPanel x:Name="StackPanel_ayarlar" Margin="0,0,0,5" Background="#FF919191" HorizontalAlignment="Right" Width="142" Visibility="Collapsed">
+            <StackPanel.Effect>
+                <DropShadowEffect RenderingBias="Quality" ShadowDepth="2" Direction="270"/>
+            </StackPanel.Effect>
+            <Button x:Name="btn_ayar_kapat" Content="Panel Kapat" Click="btn_ayar_kapat_Click"/>
+            <CheckBox x:Name="checkBox_sorting" Content="Sıralama İzni" Checked="checkBox_sorting_Checked" Unchecked="checkBox_sorting_Unchecked" IsChecked="True"/>
+            <CheckBox x:Name="checkBox_resizecolumn" Content="Sütun Genişliği" IsChecked="True" Checked="checkBox_resizecolumn_Checked" Unchecked="checkBox_resizecolumn_Unchecked"/>
+            <CheckBox x:Name="checkBox_resizerow" Content="Satir Yüksekliği" IsChecked="True" Checked="checkBox_resizerow_Checked" Unchecked="checkBox_resizerow_Unchecked"/>
+            <CheckBox x:Name="checkBox_reorder" Content="Sütun Taşıma" IsChecked="True" Checked="checkBox_reorder_Checked" Unchecked="checkBox_reorder_Unchecked"/>
+        </StackPanel>
+        <StackPanel x:Name="StackPanel_kayitislem" HorizontalAlignment="Left" Margin="10,47,0,74" Width="268" Visibility="Collapsed">
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFA8B6C5" Offset="0.008"/>
+                    <GradientStop Color="White" Offset="0.44"/>
+                    <GradientStop Color="#FFA2A2A4" Offset="0.972"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <StackPanel.Effect>
+                <DropShadowEffect BlurRadius="18" ShadowDepth="10" Direction="284"/>
+            </StackPanel.Effect>
+            <Button x:Name="btn_kayitislem_kapat" Content="X" Margin="247,0,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Height="21" FontWeight="Bold" FontFamily="Segoe Print" FontSize="16" Foreground="Red" Padding="0" BorderThickness="0" Click="btn_kayitislem_kapat_Click">
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="4" Direction="266" ShadowDepth="1"/>
+                </Button.Effect>
+            </Button>
+            <Label x:Name="lbl_kayitislem" Content="Label" FontSize="16" FontFamily="Century Gothic" Height="27" />
+        </StackPanel>
+    </Grid>
+</Window>

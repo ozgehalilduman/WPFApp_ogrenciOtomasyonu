@@ -50,5 +50,12 @@ namespace WpfApp_ogrenciOtomasyonu
         {
             return cinsiyetler;
         }
+        ///<summary>
+        /// Secilen Öğrenciyi silen Metodumuz 
+        /// </summary>
+        public void ogrenciSil(ogrenci ogr)
+        {
+            ogr_lst.Remove(ogr);
+        }
     }
 }

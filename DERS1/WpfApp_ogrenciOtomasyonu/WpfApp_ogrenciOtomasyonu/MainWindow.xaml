@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <DataGrid x:Name="dataGrid_ogrler" Margin="6,47,14,42" Loaded="dataGrid_ogrler_Loaded" AutoGenerateColumns="False">
+        <DataGrid x:Name="dataGrid_ogrler" Margin="6,47,14,10" Loaded="dataGrid_ogrler_Loaded" AutoGenerateColumns="False" CanUserAddRows="False" d:IsLocked="True" d:IsHidden="True">
             <DataGrid.AlternatingRowBackground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFC8CBE8" Offset="0"/>
@@ -26,7 +26,6 @@
                 <DataGridTextColumn Binding="{Binding Kilo}" ClipboardContentBinding="{x:Null}" Header="KİLO"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label x:Name="label" Content="OGRENCI LISTESI" HorizontalAlignment="Left" Margin="6,-3,0,0" FontWeight="Thin" FontFamily="Bombing" FontSize="32" Width="209" Height="45" VerticalAlignment="Top"/>
-
+        <Label x:Name="label" Content="OGRENCI LISTESI" HorizontalAlignment="Left" Margin="6,-3,0,0" FontWeight="Thin" FontFamily="Bombing" FontSize="32" Width="209" Height="45" VerticalAlignment="Top" d:IsLocked="True" d:IsHidden="True"/>
     </Grid>
 </Window>
