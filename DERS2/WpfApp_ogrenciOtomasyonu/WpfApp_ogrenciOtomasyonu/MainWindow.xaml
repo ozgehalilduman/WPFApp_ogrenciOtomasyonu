@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525" SizeToContent="WidthAndHeight" Margin="0">
     <Grid>
-        <DataGrid x:Name="dataGrid_ogrler" Margin="6,47,14,10" Loaded="dataGrid_ogrler_Loaded" AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False" SelectionChanged="dataGrid_ogrler_SelectionChanged">
+        <DataGrid x:Name="dataGrid_ogrler" Margin="6,47,14,10" Loaded="dataGrid_ogrler_Loaded" AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False">
             <DataGrid.AlternatingRowBackground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFC8CBE8" Offset="0"/>
@@ -59,7 +59,7 @@
             <CheckBox x:Name="checkBox_resizerow" Content="Satir Yüksekliği" IsChecked="True" Checked="checkBox_resizerow_Checked" Unchecked="checkBox_resizerow_Unchecked"/>
             <CheckBox x:Name="checkBox_reorder" Content="Sütun Taşıma" IsChecked="True" Checked="checkBox_reorder_Checked" Unchecked="checkBox_reorder_Unchecked"/>
         </StackPanel>
-        <StackPanel x:Name="StackPanel_kayitislem" HorizontalAlignment="Left" Margin="10,47,0,74" Width="268" Visibility="Collapsed">
+        <StackPanel x:Name="StackPanel_kayitislem" HorizontalAlignment="Left" Margin="10,47,0,10" Width="278" Visibility="Collapsed">
             <StackPanel.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFA8B6C5" Offset="0.008"/>
@@ -75,7 +75,25 @@
                     <DropShadowEffect BlurRadius="4" Direction="266" ShadowDepth="1"/>
                 </Button.Effect>
             </Button>
-            <Label x:Name="lbl_kayitislem" Content="Label" FontSize="16" FontFamily="Century Gothic" Height="27" />
+            <Label x:Name="lbl_kayitislem" Content="Label" FontSize="16" FontFamily="Century Gothic" Height="27" FontWeight="Bold" FontStyle="Italic" />
+            <TextBox x:Name="textBox_okulno" Height="23" TextWrapping="Wrap" Text="OKUL NO" />
+            <TextBox x:Name="textBox_ad" Height="23" TextWrapping="Wrap" Text="ADI"/>
+            <TextBox x:Name="textBox_soyad" Height="23" TextWrapping="Wrap" Text="SOYADI"/>
+            <TextBox x:Name="textBox_sinif" Height="23" TextWrapping="Wrap" Text="SINIFI"/>
+            <ComboBox x:Name="comboBox_kayitislem_cinsiyet" Text="CİNSİYETİ"/>
+            <TextBox x:Name="textBox_tc" Height="23" TextWrapping="Wrap" Text="TC NO"/>
+            <TextBox x:Name="textBox_boy" Height="23" TextWrapping="Wrap" Text="BOYU"/>
+            <TextBox x:Name="textBox_kilo" Height="23" TextWrapping="Wrap" Text="KİLOSU"/>
+            <Button x:Name="ogrenci_kaydet" Content="KAYDET" FontWeight="Bold" FontFamily="Century Gothic" Click="ogrenci_kaydet_Click">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFD40000" Offset="0"/>
+                        <GradientStop Color="White" Offset="0.956"/>
+                        <GradientStop Color="#FFDC3333" Offset="1"/>
+                        <GradientStop Color="#FFE15252" Offset="0.92"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

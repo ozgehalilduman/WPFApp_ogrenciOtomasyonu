@@ -31,6 +31,7 @@ namespace WpfApp_ogrenciOtomasyonu
         {//dataGrid yüklendiğinde mevcut ogrenci listemi yüklüyorum...
             dataGrid_ogrler.ItemsSource = ogr.ogrenciListesi();
             CinsiyetComboBox.ItemsSource = ogr.cinsiyetListesi();
+            comboBox_kayitislem_cinsiyet.ItemsSource= ogr.cinsiyetListesi();
         }
         private void btn_ayar_kapat_Click(object sender, RoutedEventArgs e)
         {
@@ -82,11 +83,6 @@ namespace WpfApp_ogrenciOtomasyonu
             dataGrid_ogrler.CanUserReorderColumns = false;
         }
 
-        private void dataGrid_ogrler_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {            
-
-        }
-
         private void kayit_sil(object sender, RoutedEventArgs e)
         {
             ogrenci secilen_ogr = (ogrenci)dataGrid_ogrler.SelectedItem;
@@ -99,11 +95,35 @@ namespace WpfApp_ogrenciOtomasyonu
             lbl_kayitislem.Content = "KAYIT DÜZENLEME";
             dataGrid_ogrler.IsEnabled = false;
             StackPanel_kayitislem.Visibility = Visibility.Visible;
-
+            ogrenci s_ogr= (ogrenci)dataGrid_ogrler.SelectedItem;
+            textBox_okulno.Text = s_ogr.Okulno.ToString();
+            textBox_ad.Text = s_ogr.Ad;
+            textBox_soyad.Text = s_ogr.Soyad;
+            textBox_sinif.Text = s_ogr.Sinif;
+            textBox_tc.Text = s_ogr.TcNo;
+            textBox_boy.Text = s_ogr.Boy.ToString();
+            textBox_kilo.Text = s_ogr.Kilo.ToString();
+            comboBox_kayitislem_cinsiyet.SelectedValue = s_ogr.Cinsiyet;
         }
 
         private void btn_kayitislem_kapat_Click(object sender, RoutedEventArgs e)
         {
+            StackPanel_kayitislem.Visibility = Visibility.Hidden;
+            dataGrid_ogrler.IsEnabled = true;
+        }
+
+        private void ogrenci_kaydet_Click(object sender, RoutedEventArgs e)
+        {
+            ogrenci s_ogr = (ogrenci)dataGrid_ogrler.SelectedItem;
+            s_ogr.Okulno = Int32.Parse(textBox_okulno.Text);
+            s_ogr.Ad = textBox_ad.Text;
+            s_ogr.Soyad = textBox_soyad.Text;
+            s_ogr.Sinif= textBox_sinif.Text;
+            s_ogr.TcNo = textBox_tc.Text;
+            s_ogr.Boy = Convert.ToByte(textBox_boy.Text);
+            s_ogr.Kilo = Convert.ToByte(textBox_kilo.Text);
+            s_ogr.Cinsiyet = Convert.ToChar(comboBox_kayitislem_cinsiyet.SelectedValue);
+            dataGrid_ogrler.Items.Refresh();
             StackPanel_kayitislem.Visibility = Visibility.Hidden;
             dataGrid_ogrler.IsEnabled = true;
         }
