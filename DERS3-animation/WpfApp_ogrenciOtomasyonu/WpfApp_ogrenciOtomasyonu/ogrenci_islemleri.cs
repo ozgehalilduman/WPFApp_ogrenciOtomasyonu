@@ -66,5 +66,12 @@ namespace WpfApp_ogrenciOtomasyonu
         {
             ogr_lst.Remove(ogr);
         }
+        ///<summary>
+        /// Yeni ogrenciyi kaynağa eklemeye yarar 
+        /// </summary>
+        public void ogrenciEkle(ogrenci ogr)
+        {
+            ogr_lst.Add(ogr);
+        }
     }
 }

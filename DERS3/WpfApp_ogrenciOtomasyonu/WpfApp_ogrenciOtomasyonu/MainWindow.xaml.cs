@@ -28,6 +28,7 @@ namespace WpfApp_ogrenciOtomasyonu
         
         ogrenci_islemleri ogr = new ogrenci_islemleri();
         ogrenci secilen_ogr = new ogrenci();
+        ogrenci yeni_ogr = new ogrenci();
         private void dataGrid_ogrler_Loaded(object sender, RoutedEventArgs e)
         {//dataGrid yüklendiğinde mevcut ogrenci listemi yüklüyorum...
             dataGrid_ogrler.ItemsSource = ogr.ogrenciListesi();
@@ -93,9 +94,10 @@ namespace WpfApp_ogrenciOtomasyonu
         private void kayit_duzenle(object sender, RoutedEventArgs e)
         {
             lbl_kayitislem.Content = "KAYIT DÜZENLEME";
+            lbl_kayitislem.Tag = "edit";
             dataGrid_ogrler.IsEnabled = false;
             StackPanel_kayitislem.Visibility = Visibility.Visible;
-            StackPanel_kayitislem.DataContext = secilen_ogr;
+            StackPanel_kayitislem.DataContext = secilen_ogr;//ogr.ogrenciListesi(secilen_ogr);
             /*
             ogrenci s_ogr= (ogrenci)dataGrid_ogrler.SelectedItem;
             textBox_okulno.Text = s_ogr.Okulno.ToString();
@@ -131,11 +133,25 @@ namespace WpfApp_ogrenciOtomasyonu
             */
             StackPanel_kayitislem.Visibility = Visibility.Hidden;
             dataGrid_ogrler.IsEnabled = true;
+            if (lbl_kayitislem.Tag.ToString() == "yeni")
+            {
+                ogr.ogrenciEkle(yeni_ogr);
+            }
         }
 
         private void dataGrid_ogrler_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             secilen_ogr = (ogrenci)dataGrid_ogrler.SelectedItem;
+        }
+
+        private void btn_yenikayit_Click(object sender, RoutedEventArgs e)
+        {
+            
+            lbl_kayitislem.Content = "YENİ KAYIT";
+            lbl_kayitislem.Tag = "yeni";
+            dataGrid_ogrler.IsEnabled = false;
+            StackPanel_kayitislem.Visibility = Visibility.Visible;
+            StackPanel_kayitislem.DataContext = yeni_ogr;
         }
     }
 }

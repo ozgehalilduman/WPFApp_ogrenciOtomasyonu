@@ -5,15 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp_ogrenciOtomasyonu"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" SizeToContent="WidthAndHeight" Margin="0">
-    <Grid>
-        <DataGrid x:Name="dataGrid_ogrler" Margin="6,47,14,10" Loaded="dataGrid_ogrler_Loaded" AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False" SelectionChanged="dataGrid_ogrler_SelectionChanged">
-            <DataGrid.AlternatingRowBackground>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFC8CBE8" Offset="0"/>
-                    <GradientStop Color="#FF6FC3E2" Offset="1"/>
-                </LinearGradientBrush>
-            </DataGrid.AlternatingRowBackground>
+        Title="MainWindow" Height="350" Width="525" SizeToContent="WidthAndHeight" Margin="0" Foreground="#FFD122F7" Background="Red">
+    <Window.Resources>
+        <Storyboard x:Key="Storyboard_panelayar_ac" AutoReverse="False" RepeatBehavior="1x">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="StackPanel_ayarlar">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-149"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="StackPanel_ayarlar">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="StackPanel_ayarlar">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:1" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_panelayar_kapat" AutoReverse="False" RepeatBehavior="1x">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="StackPanel_ayarlar">
+                <SplineDoubleKeyFrame KeyTime="0" Value="-149"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="StackPanel_ayarlar">
+                <SplineDoubleKeyFrame KeyTime="0" Value="1"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="StackPanel_ayarlar">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:1" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Color x:Key="Color1">#FF4097FF</Color>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btn_ayarlar">
+            <BeginStoryboard Storyboard="{StaticResource Storyboard_panelayar_ac}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btn_ayar_kapat">
+            <BeginStoryboard x:Name="Storyboard_panelayar_kapat_BeginStoryboard" Storyboard="{StaticResource Storyboard_panelayar_kapat}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid Background="#FF404040">
+        <DataGrid x:Name="dataGrid_ogrler" Margin="6,47,10,10" Loaded="dataGrid_ogrler_Loaded" AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False" SelectionChanged="dataGrid_ogrler_SelectionChanged" Background="#C5686868" HorizontalGridLinesBrush="{x:Null}" AlternatingRowBackground="#FF6E99BD" FontFamily="Century Gothic" TextOptions.TextHintingMode="Fixed">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
                 <DataGridTextColumn Binding="{Binding Okulno}" ClipboardContentBinding="{x:Null}" Header="OKULNO"/>
@@ -21,6 +54,7 @@
                 <DataGridTextColumn Binding="{Binding Soyad}" ClipboardContentBinding="{x:Null}" Header="SOYADI"/>
                 <DataGridTextColumn Binding="{Binding Sinif}" ClipboardContentBinding="{x:Null}" Header="SINIF"/>
                 <DataGridTextColumn Binding="{Binding TcNo}" ClipboardContentBinding="{x:Null}" Header="TC KİMLİK"/>
+                <DataGridTextColumn Binding="{Binding Cinsiyet}" ClipboardContentBinding="{x:Null}" Header="CİNSİYETİ"/>
                 <DataGridComboBoxColumn x:Name="CinsiyetComboBox" ClipboardContentBinding="{x:Null}" Header="CİNSİYET"  SelectedItemBinding="{Binding Cinsiyet}" />
                 <DataGridTextColumn Binding="{Binding Boy}" ClipboardContentBinding="{x:Null}" Header="BOY"/>
                 <DataGridTextColumn Binding="{Binding Kilo}" ClipboardContentBinding="{x:Null}" Header="KİLO"/>
@@ -40,16 +74,37 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Label x:Name="label" Content="OGRENCI LISTESI" HorizontalAlignment="Left" Margin="6,-3,0,0" FontWeight="Thin" FontFamily="Bombing" FontSize="32" Width="209" Height="45" VerticalAlignment="Top"/>
-        <Button x:Name="btn_ayarlar" Content="" VerticalAlignment="Top" Height="30" HorizontalAlignment="Right" Width="32" RenderTransformOrigin="0.652,0.911" Click="btn_ayarlar_Click" BorderBrush="{x:Null}">
+        <Label x:Name="label" Content="OGRENCI LISTESI" HorizontalAlignment="Left" Margin="6,2,0,0" FontFamily="Century Gothic" FontSize="24" Width="209" Height="45" VerticalAlignment="Top" FontWeight="Bold">
+            <Label.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="{DynamicResource Color1}"/>
+                    <GradientStop Color="#FFA9D0FF" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Foreground>
+            <Label.Effect>
+                <DropShadowEffect/>
+            </Label.Effect>
+        </Label>
+        <Button x:Name="btn_ayarlar" Content="" VerticalAlignment="Top" Height="42" HorizontalAlignment="Right" Width="48" RenderTransformOrigin="0.652,0.911" Click="btn_ayarlar_Click" BorderBrush="{x:Null}">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
             <Button.Foreground>
                 <ImageBrush ImageSource="setting.png"/>
             </Button.Foreground>
             <Button.Background>
-                <ImageBrush ImageSource="setting.png"/>
+                <ImageBrush ImageSource="setting.png" Stretch="UniformToFill"/>
             </Button.Background>
         </Button>
-        <StackPanel x:Name="StackPanel_ayarlar" Margin="0,0,0,5" Background="#FF919191" HorizontalAlignment="Right" Width="142" Visibility="Collapsed">
+        <StackPanel x:Name="StackPanel_ayarlar" Margin="0,0,-147,5" Background="#FF919191" HorizontalAlignment="Right" Width="142" RenderTransformOrigin="0.5,0.5">
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
             <StackPanel.Effect>
                 <DropShadowEffect RenderingBias="Quality" ShadowDepth="2" Direction="270"/>
             </StackPanel.Effect>
@@ -76,15 +131,42 @@
                 </Button.Effect>
             </Button>
             <Label x:Name="lbl_kayitislem" Content="Label" FontSize="16" FontFamily="Century Gothic" Height="27" FontWeight="Bold" FontStyle="Italic" />
-            <TextBox x:Name="textBox_okulno" Height="23" TextWrapping="Wrap" Text="{Binding Okulno}" />
-            <TextBox x:Name="textBox_ad" Height="23" TextWrapping="Wrap" Text="{Binding Ad}"/>
-            <TextBox x:Name="textBox_soyad" Height="23" TextWrapping="Wrap" Text="{Binding Soyad}"/>
-            <TextBox x:Name="textBox_sinif" Height="23" TextWrapping="Wrap" Text="{Binding Sinif}"/>
-            <ComboBox x:Name="comboBox_kayitislem_cinsiyet" Text="{Binding Cinsiyet}"/>
-            <TextBox x:Name="textBox_tc" Height="23" TextWrapping="Wrap" Text="{Binding TcNo}"/>
-            <TextBox x:Name="textBox_boy" Height="23" TextWrapping="Wrap" Text="{Binding Boy}"/>
-            <TextBox x:Name="textBox_kilo" Height="23" TextWrapping="Wrap" Text="{Binding Kilo}"/>
-            <Button x:Name="ogrenci_kaydet" Content="KAYDET" FontWeight="Bold" FontFamily="Century Gothic" Click="ogrenci_kaydet_Click">
+            <StackPanel Height="27" Orientation="Horizontal">
+                <Label x:Name="label1" Content="OKULNO" Width="75"/>
+                <TextBox x:Name="textBox_okulno" TextWrapping="Wrap" Text="{Binding Okulno}" Width="197" />
+            </StackPanel>
+            <StackPanel Height="27" Orientation="Horizontal">
+                <Label x:Name="label2" Content="AD" Width="75"/>
+                <TextBox x:Name="textBox_ad" TextWrapping="Wrap" Text="{Binding Ad}" Width="197"/>
+            </StackPanel>
+            <StackPanel Height="27" Orientation="Horizontal">
+                <Label x:Name="label3" Content="SOYAD" Width="75"/>
+                <TextBox x:Name="textBox_soyad" TextWrapping="Wrap" Text="{Binding Soyad}" Width="197"/>
+            </StackPanel>
+            <StackPanel Height="27" Orientation="Horizontal">
+                <Label x:Name="label4" Content="SINIF" Width="75"/>
+                <TextBox x:Name="textBox_sinif" TextWrapping="Wrap" Text="{Binding Sinif}" Width="197"/>
+            </StackPanel>
+            <StackPanel Height="27" Orientation="Horizontal">
+                <Label x:Name="label5" Content="CİNSİYET" Width="75"/>
+                <ComboBox x:Name="comboBox_kayitislem_cinsiyet" Text="{Binding Cinsiyet}" Width="197"/>
+            </StackPanel>
+            <StackPanel Height="27" Orientation="Horizontal">
+                <Label x:Name="label6" Content="TC NO" Width="75"/>
+                <TextBox x:Name="textBox_tc" TextWrapping="Wrap" Text="{Binding TcNo}" Width="197"/>
+            </StackPanel>
+            <StackPanel Height="27" Orientation="Horizontal">
+                <Label x:Name="label7" Content="BOYU" Width="75"/>
+                <TextBox x:Name="textBox_boy" TextWrapping="Wrap" Text="{Binding Boy}" Width="197"/>
+            </StackPanel>
+            <StackPanel Height="27" Orientation="Horizontal">
+                <Label x:Name="label8" Content="KİLO" Width="75"/>
+                <TextBox x:Name="textBox_kilo" TextWrapping="Wrap" Text="{Binding Kilo}" Width="197" Margin="0,0,0,2"/>
+            </StackPanel>
+            <Button x:Name="ogrenci_kaydet" Content="KAYDET" FontWeight="Bold" FontFamily="Century Gothic" Click="ogrenci_kaydet_Click" Margin="0,10,0,0">
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FFD40000" Offset="0"/>
@@ -95,5 +177,10 @@
                 </Button.Background>
             </Button>
         </StackPanel>
+        <Button x:Name="btn_yenikayit" Content="Yeni Kayıt" HorizontalAlignment="Left" Margin="235,6,0,0" VerticalAlignment="Top" Width="101" RenderTransformOrigin="0.253,0.1" Click="btn_yenikayit_Click" Height="32">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="10" ShadowDepth="1"/>
+            </Button.Effect>
+        </Button>
     </Grid>
 </Window>

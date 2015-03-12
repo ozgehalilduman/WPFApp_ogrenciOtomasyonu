@@ -18,17 +18,60 @@ namespace WpfApp_ogrenciOtomasyonu
         //ama bu kısmı geliştireceğiz...
         private string ad;
         public string Ad {
-            get { return ad.ToUpper(); }//Sınıfın Ad değeri küçük harfle girilmiş olsa bile,okunurken büyük harfe çevrilmesini sağlıyorum
+            get {
+                    if (ad != null)
+                    {
+                        return ad.ToUpper();
+                    }
+                    else
+                    {
+                        return ad;
+                    }                    
+                }//Sınıfın Ad değeri küçük harfle girilmiş olsa bile,okunurken büyük harfe çevrilmesini sağlıyorum
             set { ad = value; }//Üzerinde kontrol saglayabilmek(işlem yapabilmek) için Ad a girilen degeri private ad a aktarıyorum...
         }
         private string soyad;
         public string Soyad {
-            get { return soyad.ToUpper(); }
+            get {
+                    if (soyad != null)
+                    {
+                        return soyad.ToUpper();
+                    }
+                    else
+                    {
+                        return soyad;
+                    }
+            }
             set { soyad = value; }
         }
         public string Sinif { get; set; }
         public int Okulno { get; set; }
-        public string TcNo { get; set; }
+        private string tcno;
+        public string TcNo {
+            get {
+                    if (tcno != null)
+                    {
+                        if (tcno.Length == 11)
+                        {
+                            return tcno;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                    
+                }
+            set
+                {
+                    tcno = value;
+                }
+
+        }
         public char Cinsiyet { get; set; }
         public byte Boy { get; set; }
         public byte Kilo { get; set; }
