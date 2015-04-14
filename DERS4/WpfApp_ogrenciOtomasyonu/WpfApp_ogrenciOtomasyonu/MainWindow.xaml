@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525" SizeToContent="WidthAndHeight" Margin="0" Foreground="#FFD122F7" Background="Red">
     <Window.Resources>
+        <DataTemplate x:Key="header_sil_button">
+            <Button x:Name="secilileri_sil_btn" Content="SECİLİ OLANLARI SİL" Click="secilileri_sil_btn_Click"></Button>
+        </DataTemplate>
         <Storyboard x:Key="Storyboard_panelayar_ac" AutoReverse="False" RepeatBehavior="1x">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="StackPanel_ayarlar">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
@@ -45,7 +48,7 @@
         </EventTrigger>
     </Window.Triggers>
     <Grid Background="#FF404040">
-        <DataGrid x:Name="dataGrid_ogrler" Margin="6,47,10,10" Loaded="dataGrid_ogrler_Loaded" AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False" SelectionChanged="dataGrid_ogrler_SelectionChanged" Background="#C5686868" HorizontalGridLinesBrush="{x:Null}" AlternatingRowBackground="#FF6E99BD" FontFamily="Century Gothic" TextOptions.TextHintingMode="Fixed">
+        <DataGrid x:Name="dataGrid_ogrler" Margin="6,47,10,10" Loaded="dataGrid_ogrler_Loaded" AutoGenerateColumns="False" CanUserAddRows="False" CanUserSortColumns="False" SelectionChanged="dataGrid_ogrler_SelectionChanged" Background="#C5686868" HorizontalGridLinesBrush="{x:Null}" AlternatingRowBackground="#FF6E99BD" FontFamily="Century Gothic" TextOptions.TextHintingMode="Fixed" CellEditEnding="dataGrid_ogrler_CellEditEnding" SelectedCellsChanged="dataGrid_ogrler_SelectedCellsChanged">
             <DataGrid.Columns>
                 <DataGridCheckBoxColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}"/>
                 <DataGridTextColumn Binding="{Binding Okulno}" ClipboardContentBinding="{x:Null}" Header="OKULNO"/>
@@ -56,7 +59,7 @@
                 <DataGridComboBoxColumn x:Name="CinsiyetComboBox" ClipboardContentBinding="{x:Null}" Header="CİNSİYET"  SelectedItemBinding="{Binding Cinsiyet}" />
                 <DataGridTextColumn Binding="{Binding Boy}" ClipboardContentBinding="{x:Null}" Header="BOY"/>
                 <DataGridTextColumn Binding="{Binding Kilo}" ClipboardContentBinding="{x:Null}" Header="KİLO"/>
-                <DataGridTemplateColumn ClipboardContentBinding="{x:Null}">
+                <DataGridTemplateColumn ClipboardContentBinding="{x:Null}" HeaderTemplate="{StaticResource header_sil_button}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Content="Sil" Click="kayit_sil"/>

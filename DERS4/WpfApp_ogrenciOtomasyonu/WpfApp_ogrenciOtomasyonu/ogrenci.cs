@@ -73,7 +73,7 @@ namespace WpfApp_ogrenciOtomasyonu
                 }
 
         }
-        public char Cinsiyet { get; set; }
+        public string Cinsiyet { get; set; }
         public byte Boy { get; set; }
         public byte Kilo { get; set; }
     }

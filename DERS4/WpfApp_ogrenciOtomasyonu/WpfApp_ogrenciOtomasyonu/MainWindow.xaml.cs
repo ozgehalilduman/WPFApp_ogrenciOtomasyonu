@@ -29,7 +29,7 @@ namespace WpfApp_ogrenciOtomasyonu
      
         ogrenci_islemleri ogr = new ogrenci_islemleri();
         ogrenci secilen_ogr = new ogrenci();
-        ogrenci yeni_ogr = new ogrenci();
+        ogrenci yeni_ogr;
         private void dataGrid_ogrler_Loaded(object sender, RoutedEventArgs e)
         {//dataGrid yüklendiğinde mevcut ogrenci listemi yüklüyorum...
             dataGrid_ogrler.ItemsSource = ogr.ogrenciListesi();
@@ -138,11 +138,13 @@ namespace WpfApp_ogrenciOtomasyonu
             {
                 ogr.ogrenciEkle(yeni_ogr);
             }
+            ogr.vt_guncelle();
         }
 
         private void dataGrid_ogrler_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             secilen_ogr = (ogrenci)dataGrid_ogrler.SelectedItem;
+            ogr.vt_guncelle();
         }
 
         private void btn_yenikayit_Click(object sender, RoutedEventArgs e)
@@ -151,8 +153,29 @@ namespace WpfApp_ogrenciOtomasyonu
             lbl_kayitislem.Content = "YENİ KAYIT";
             lbl_kayitislem.Tag = "yeni";
             dataGrid_ogrler.IsEnabled = false;
+            yeni_ogr = new ogrenci();
             StackPanel_kayitislem.Visibility = Visibility.Visible;
             StackPanel_kayitislem.DataContext = yeni_ogr;
+        }
+
+        private void dataGrid_ogrler_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            ogr.vt_guncelle();                    
+        }
+
+        private void dataGrid_ogrler_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {//her ihtimale karşı değişiklikleri kaydetmek için
+            ogr.vt_guncelle();     
+        }
+
+        private void secilileri_sil_btn_Click(object sender, RoutedEventArgs e)
+        {
+            List<ogrenci> silinecek_ogrenciler=new List<ogrenci>();
+            foreach (var o in dataGrid_ogrler.SelectedItems)
+            {
+                silinecek_ogrenciler.Add((ogrenci)o);
+            }
+            ogr.ogrenciSil(silinecek_ogrenciler);
         }
     }
 }
