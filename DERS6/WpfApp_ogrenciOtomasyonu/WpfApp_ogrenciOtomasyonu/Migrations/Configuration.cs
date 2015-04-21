@@ -10,7 +10,6 @@ namespace WpfApp_ogrenciOtomasyonu.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "WpfApp_ogrenciOtomasyonu.veriyapisi";
         }
 
         protected override void Seed(WpfApp_ogrenciOtomasyonu.veriyapisi context)

@@ -13,7 +13,7 @@ namespace WpfApp_ogrenciOtomasyonu
     /// </summary>
     class ogrenci_islemleri
     {
-        veriyapisi ogrencikaynak = new veriyapisi();
+        veriyapisi verikaynak = new veriyapisi();
         //cinsiyet kısmı için gerekli secenkleri oluşturuyorum
         ObservableCollection<string> cinsiyetler=new ObservableCollection<string>();
         //şimdilik baslangıç degerleri ekliyorum... Entity Framework kullanmaya başlayınca sileceğiz      
@@ -22,22 +22,31 @@ namespace WpfApp_ogrenciOtomasyonu
         /// </summary>
         public ogrenci_islemleri()
         {
-            ogrencikaynak.ogrenciler.ToList();//local kaynağı dolduruyorum....
+            verikaynak.ogrenciler.ToList();//local kaynağı dolduruyorum....
             //beş baslangıc kaydı oluşturuyorum...   
             
-            if(ogrencikaynak.ogrenciler.Local.Count<1)
+            if(verikaynak.ogrenciler.Local.Count<1)
             {
-                ogrencikaynak.ogrenciler.Local.Add(new ogrenci() { Ad = "Ahmet Eren", Soyad = "Peker", SinifID = 1, Okulno = 1100,TcNo="12345678901",Cinsiyet="E",Boy=170,Kilo=70 });
-                ogrencikaynak.ogrenciler.Local.Add(new ogrenci() { Ad = "Mehmet", Soyad = "Acer", SinifID = 1, Okulno = 1102, TcNo = "12345678902", Cinsiyet = "E", Boy = 171, Kilo = 70 });
-                ogrencikaynak.ogrenciler.Local.Add(new ogrenci() { Ad = "Arif", Soyad = "Ceren", SinifID = 1, Okulno = 1105, TcNo = "12345678903", Cinsiyet = "E", Boy = 170, Kilo = 70 });
-                ogrencikaynak.ogrenciler.Local.Add(new ogrenci() { Ad = "Mert", Soyad = "Güven", SinifID = 1, Okulno = 1106, TcNo = "12345678904", Cinsiyet = "E", Boy = 171, Kilo = 70 });
-                ogrencikaynak.ogrenciler.Local.Add(new ogrenci() { Ad = "Yusuf", Soyad = "", SinifID = 1, Okulno = 1107, TcNo = "12345678905", Cinsiyet = "E", Boy = 170, Kilo = 70 });
-                ogrencikaynak.ogrenciler.Local.Add(new ogrenci() { Ad = "Mustafa", Soyad = "", SinifID = 1, Okulno = 1108, TcNo = "12345678906", Cinsiyet = "E", Boy = 171, Kilo = 70 });
-                ogrencikaynak.ogrenciler.Local.Add(new ogrenci() { Ad = "Kaan", Soyad = "Özgen", SinifID = 1, Okulno = 1131, TcNo = "12345678907", Cinsiyet = "E", Boy = 170, Kilo = 70 });
-                ogrencikaynak.ogrenciler.Local.Add(new ogrenci() { Ad = "Emre", Soyad = "Yıldız", SinifID = 1, Okulno = 1134, TcNo = "12345678908", Cinsiyet = "E", Boy = 171, Kilo = 70 });
-                ogrencikaynak.ogrenciler.Local.Add(new ogrenci() { Ad = "Saygın", Soyad = "Bakar", SinifID = 1, Okulno = 1158, TcNo = "12345678909", Cinsiyet = "E", Boy = 170, Kilo = 70 });
-                ogrencikaynak.ogrenciler.Local.Add(new ogrenci() { Ad = "MehmetX", Soyad = "Öz", SinifID = 1, Okulno = 1101, TcNo = "12345678910", Cinsiyet = "E", Boy = 171, Kilo = 70 });
-         
+                verikaynak.ogrenciler.Local.Add(new ogrenci() { Ad = "AhmetEren", Soyad = "Peker", SinifID = 1, Okulno = 1100,TcNo="12345678901",Cinsiyet="E",Boy=170,Kilo=70 });
+                verikaynak.ogrenciler.Local.Add(new ogrenci() { Ad = "Mehmet", Soyad = "Acer", SinifID = 1, Okulno = 1102, TcNo = "12345678902", Cinsiyet = "E", Boy = 171, Kilo = 70 });
+                verikaynak.ogrenciler.Local.Add(new ogrenci() { Ad = "Arif", Soyad = "Ceren", SinifID = 1, Okulno = 1105, TcNo = "12345678903", Cinsiyet = "E", Boy = 170, Kilo = 70 });
+                verikaynak.ogrenciler.Local.Add(new ogrenci() { Ad = "Mert", Soyad = "Güven", SinifID = 1, Okulno = 1106, TcNo = "12345678904", Cinsiyet = "E", Boy = 171, Kilo = 70 });
+                verikaynak.ogrenciler.Local.Add(new ogrenci() { Ad = "Yusuf", Soyad = "KOÇ", SinifID = 1, Okulno = 1107, TcNo = "12345678905", Cinsiyet = "E", Boy = 170, Kilo = 70 });
+                verikaynak.ogrenciler.Local.Add(new ogrenci() { Ad = "Mustafa", Soyad = "BAÇ", SinifID = 1, Okulno = 1108, TcNo = "12345678906", Cinsiyet = "E", Boy = 171, Kilo = 70 });
+                verikaynak.ogrenciler.Local.Add(new ogrenci() { Ad = "Kaan", Soyad = "Özgen", SinifID = 1, Okulno = 1131, TcNo = "12345678907", Cinsiyet = "E", Boy = 170, Kilo = 70 });
+                verikaynak.ogrenciler.Local.Add(new ogrenci() { Ad = "Emre", Soyad = "Yıldız", SinifID = 1, Okulno = 1134, TcNo = "12345678908", Cinsiyet = "E", Boy = 171, Kilo = 70 });
+                verikaynak.ogrenciler.Local.Add(new ogrenci() { Ad = "Saygin", Soyad = "Bakar", SinifID = 1, Okulno = 1158, TcNo = "12345678909", Cinsiyet = "E", Boy = 170, Kilo = 70 });
+                verikaynak.ogrenciler.Local.Add(new ogrenci() { Ad = "MehmetX", Soyad = "Öz", SinifID = 1, Okulno = 1101, TcNo = "12345678910", Cinsiyet = "E", Boy = 171, Kilo = 70 });  
+            }
+            verikaynak.siniflar.ToList();
+            if (verikaynak.siniflar.Local.Count < 1)
+            {
+                verikaynak.siniflar.Local.Add(new sinif() { seviye = 11, sube = "T" });
+                verikaynak.siniflar.Local.Add(new sinif() { seviye = 10, sube = "T" });
+                verikaynak.siniflar.Local.Add(new sinif() { seviye = 12, sube = "T" });
+                verikaynak.siniflar.Local.Add(new sinif() { seviye = 11, sube = "S" });
+                verikaynak.siniflar.Local.Add(new sinif() { seviye = 10, sube = "S" });
+                verikaynak.siniflar.Local.Add(new sinif() { seviye = 12, sube = "S" });
             }
             cinsiyetler.Add("E");
             cinsiyetler.Add("K");
@@ -49,9 +58,18 @@ namespace WpfApp_ogrenciOtomasyonu
         /// <returns>List<ogrenci> mevcut tum ogrencileri listeler</returns>
         public ObservableCollection<ogrenci> ogrenciListesi()
         {
-            return ogrencikaynak.ogrenciler.Local;
+            return verikaynak.ogrenciler.Local;
         }
- 
+        public ObservableCollection<sinif> sinifListesi()
+        {
+            return verikaynak.siniflar.Local;
+        }
+        public ObservableCollection<ogrenci> ogrenciListesi(int snf)
+        {
+            var _ilgili_ogrler =  verikaynak.ogrenciler.Local.Where(s=>s.SinifID==snf).ToList();
+            ObservableCollection<ogrenci> ilgili_ogrler = new ObservableCollection<ogrenci>(_ilgili_ogrler);
+            return ilgili_ogrler;
+        }
         public ObservableCollection<string> cinsiyetListesi()
         {
             return cinsiyetler;
@@ -61,7 +79,7 @@ namespace WpfApp_ogrenciOtomasyonu
         /// </summary>
         public void ogrenciSil(ogrenci ogr)
         {
-            ogrencikaynak.ogrenciler.Local.Remove(ogr);
+            verikaynak.ogrenciler.Local.Remove(ogr);
             vt_guncelle();
         }
         ///<summary>
@@ -71,7 +89,7 @@ namespace WpfApp_ogrenciOtomasyonu
         {
             foreach(ogrenci ogr in ogrler)
             {
-                ogrencikaynak.ogrenciler.Local.Remove(ogr);
+                verikaynak.ogrenciler.Local.Remove(ogr);
             }
             
             vt_guncelle();
@@ -81,11 +99,11 @@ namespace WpfApp_ogrenciOtomasyonu
         /// </summary>
         public string ogrenciEkle(ogrenci ogr)
         {
-            ogrencikaynak.ogrenciler.Local.Add(ogr);
+            verikaynak.ogrenciler.Local.Add(ogr);
             string sonuc=vt_guncelle();
             if (sonuc != "işlem başarılı")
             {//datagridde gozükmemesi için siliyorum
-                ogrencikaynak.ogrenciler.Local.Remove(ogr);
+                verikaynak.ogrenciler.Local.Remove(ogr);
             }
             return sonuc;
         }
@@ -93,7 +111,7 @@ namespace WpfApp_ogrenciOtomasyonu
         {   //hata yakalama kullanıyorum...
             try
             {
-                ogrencikaynak.SaveChanges();
+                verikaynak.SaveChanges();
                 return "işlem başarılı";
             }
             catch (DbEntityValidationException e)

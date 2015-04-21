@@ -7,13 +7,13 @@ namespace WpfApp_ogrenciOtomasyonu.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class sinif_eklendi_data_annotations_eklendi : IMigrationMetadata
+    public sealed partial class son : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(sinif_eklendi_data_annotations_eklendi));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(son));
         
         string IMigrationMetadata.Id
         {
-            get { return "201504150401244_sinif_eklendi_data_annotations_eklendi"; }
+            get { return "201504150719457_son"; }
         }
         
         string IMigrationMetadata.Source

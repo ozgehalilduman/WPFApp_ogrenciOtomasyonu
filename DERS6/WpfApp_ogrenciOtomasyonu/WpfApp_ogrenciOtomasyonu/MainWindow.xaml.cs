@@ -27,14 +27,17 @@ namespace WpfApp_ogrenciOtomasyonu
             InitializeComponent();
         }
      
-        ogrenci_islemleri ogr = new ogrenci_islemleri();
+        ogrenci_islemleri veri = new ogrenci_islemleri();
         ogrenci secilen_ogr = new ogrenci();
         ogrenci yeni_ogr;
         private void dataGrid_ogrler_Loaded(object sender, RoutedEventArgs e)
         {//dataGrid yüklendiğinde mevcut ogrenci listemi yüklüyorum...
-            dataGrid_ogrler.ItemsSource = ogr.ogrenciListesi();
-            CinsiyetComboBox.ItemsSource = ogr.cinsiyetListesi();
-            comboBox_kayitislem_cinsiyet.ItemsSource= ogr.cinsiyetListesi();         
+            dataGrid_ogrler.ItemsSource = veri.ogrenciListesi();
+            dataGrid_siniflar.ItemsSource = veri.sinifListesi();
+            CinsiyetComboBox.ItemsSource = veri.cinsiyetListesi();
+            comboBox_kayitislem_cinsiyet.ItemsSource= veri.cinsiyetListesi();
+            comboBox_siniflar.ItemsSource = veri.sinifListesi();
+                     
         }
         private void btn_ayar_kapat_Click(object sender, RoutedEventArgs e)
         {
@@ -88,7 +91,7 @@ namespace WpfApp_ogrenciOtomasyonu
 
         private void kayit_sil(object sender, RoutedEventArgs e)
         {
-            ogr.ogrenciSil(secilen_ogr);
+            veri.ogrenciSil(secilen_ogr);
             dataGrid_ogrler.Items.Refresh();
         }
 
@@ -116,6 +119,8 @@ namespace WpfApp_ogrenciOtomasyonu
         {
             StackPanel_kayitislem.Visibility = Visibility.Hidden;
             dataGrid_ogrler.IsEnabled = true;
+            dataGrid_siniflar.IsEnabled = true;
+            comboBox_siniflar.IsEnabled = true;
         }
 
         private void ogrenci_kaydet_Click(object sender, RoutedEventArgs e)
@@ -134,9 +139,11 @@ namespace WpfApp_ogrenciOtomasyonu
             */
             StackPanel_kayitislem.Visibility = Visibility.Hidden;
             dataGrid_ogrler.IsEnabled = true;
+            dataGrid_siniflar.IsEnabled = true;
+            comboBox_siniflar.IsEnabled = true;
             if (lbl_kayitislem.Tag.ToString() == "yeni")
             {
-                string sonuc=ogr.ogrenciEkle(yeni_ogr);
+                string sonuc=veri.ogrenciEkle(yeni_ogr);
                 MessageBox.Show(sonuc);
             }
             //ogr.vt_guncelle();
@@ -145,7 +152,7 @@ namespace WpfApp_ogrenciOtomasyonu
         private void dataGrid_ogrler_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             secilen_ogr = (ogrenci)dataGrid_ogrler.SelectedItem;
-            ogr.vt_guncelle();
+            veri.vt_guncelle();
         }
 
         private void btn_yenikayit_Click(object sender, RoutedEventArgs e)
@@ -154,6 +161,8 @@ namespace WpfApp_ogrenciOtomasyonu
             lbl_kayitislem.Content = "YENİ KAYIT";
             lbl_kayitislem.Tag = "yeni";
             dataGrid_ogrler.IsEnabled = false;
+            dataGrid_siniflar.IsEnabled = false;
+            comboBox_siniflar.IsEnabled = false;
             yeni_ogr = new ogrenci();
             StackPanel_kayitislem.Visibility = Visibility.Visible;
             StackPanel_kayitislem.DataContext = yeni_ogr;
@@ -161,12 +170,12 @@ namespace WpfApp_ogrenciOtomasyonu
 
         private void dataGrid_ogrler_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-            ogr.vt_guncelle();                    
+            veri.vt_guncelle();                    
         }
 
         private void dataGrid_ogrler_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {//her ihtimale karşı değişiklikleri kaydetmek için
-            ogr.vt_guncelle();     
+            veri.vt_guncelle();     
         }
 
         private void secilileri_sil_btn_Click(object sender, RoutedEventArgs e)
@@ -176,7 +185,19 @@ namespace WpfApp_ogrenciOtomasyonu
             {
                 silinecek_ogrenciler.Add((ogrenci)o);
             }
-            ogr.ogrenciSil(silinecek_ogrenciler);
+            veri.ogrenciSil(silinecek_ogrenciler);
+        }
+
+        private void comboBox_siniflar_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var secili_sinif = (sinif)(comboBox_siniflar.SelectedItem);
+            dataGrid_ogrler.ItemsSource = veri.ogrenciListesi(secili_sinif.sinif_id);
+        }
+
+        private void dataGrid_siniflar_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var secili_sinif = (sinif)(dataGrid_siniflar.SelectedItem);
+            dataGrid_ogrler.ItemsSource = veri.ogrenciListesi(secili_sinif.sinif_id);
         }
     }
 }

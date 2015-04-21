@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WpfApp_ogrenciOtomasyonu
 {
@@ -19,7 +20,7 @@ namespace WpfApp_ogrenciOtomasyonu
         //ama bu kısmı geliştireceğiz...
         public int ogrenciID { get; set; }        
         private string ad;
-        [RegularExpression(@"^[a-zA-Z''-'\s]{1,40}$", ErrorMessage = "Rakam veya Özel karakterler girilemez")]
+        //[RegularExpression(@"^[a-zA-Z'-'\s]{1,40}$", ErrorMessage = "Ad alanına Rakam veya Özel karakterler girilemez")]
         [Required(ErrorMessage = "AD DEGERİ GİRİLMEK ZORUNDA")]
         public string Ad {
             get {
@@ -35,7 +36,7 @@ namespace WpfApp_ogrenciOtomasyonu
             set { ad = value; }//Üzerinde kontrol saglayabilmek(işlem yapabilmek) için Ad a girilen degeri private ad a aktarıyorum...
         }
         private string soyad;
-        [RegularExpression(@"^[a-zA-Z''-'\s]{1,40}$", ErrorMessage = "Rakam veya Özel karakterler girilemez")]
+        //[RegularExpression(@"^[a-zA-Z'-'\s]{1,40}$", ErrorMessage = "Soyad Alanına Rakam veya Özel karakterler girilemez")]
         [Required(ErrorMessage = "SOYAD DEGERİ GİRİLMEK ZORUNDA")]
         public string Soyad {
             get {
@@ -81,8 +82,9 @@ namespace WpfApp_ogrenciOtomasyonu
         public byte Boy { get; set; }
         public byte Kilo { get; set; }
 
-        [Required(ErrorMessage ="SINIF DEGERİ GİRİLMEK ZORUNDA")]
+        [Required(ErrorMessage ="SINIF DEGERİ GİRİLMEK ZORUNDA")]        
         public int SinifID{ get; set; }
+        [ForeignKey("SinifID")]
         public virtual sinif sinif { get; set; }
     }
 }

@@ -60,25 +60,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Migrations\201503172343297_InitialCreate.cs" />
-    <Compile Include="Migrations\201503172343297_InitialCreate.Designer.cs">
-      <DependentUpon>201503172343297_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504141822538_cinsiyet_char_change_string.cs" />
-    <Compile Include="Migrations\201504141822538_cinsiyet_char_change_string.Designer.cs">
-      <DependentUpon>201504141822538_cinsiyet_char_change_string.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504150104234_DataAnnotations_sample.cs" />
-    <Compile Include="Migrations\201504150104234_DataAnnotations_sample.Designer.cs">
-      <DependentUpon>201504150104234_DataAnnotations_sample.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504150401244_sinif_eklendi_data_annotations_eklendi.cs" />
-    <Compile Include="Migrations\201504150401244_sinif_eklendi_data_annotations_eklendi.Designer.cs">
-      <DependentUpon>201504150401244_sinif_eklendi_data_annotations_eklendi.cs</DependentUpon>
+    <Compile Include="Migrations\201504150719457_son.cs" />
+    <Compile Include="Migrations\201504150719457_son.Designer.cs">
+      <DependentUpon>201504150719457_son.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="sinif.cs" />
-    <Compile Include="sinif_islemleri.cs" />
     <Compile Include="veriyapisi.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -109,17 +96,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201503172343297_InitialCreate.resx">
-      <DependentUpon>201503172343297_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504141822538_cinsiyet_char_change_string.resx">
-      <DependentUpon>201504141822538_cinsiyet_char_change_string.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504150104234_DataAnnotations_sample.resx">
-      <DependentUpon>201504150104234_DataAnnotations_sample.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504150401244_sinif_eklendi_data_annotations_eklendi.resx">
-      <DependentUpon>201504150401244_sinif_eklendi_data_annotations_eklendi.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201504150719457_son.resx">
+      <DependentUpon>201504150719457_son.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
