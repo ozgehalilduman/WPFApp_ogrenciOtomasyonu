@@ -46,7 +46,15 @@ namespace WpfApp_ogrenciOtomasyonu
         {
             return ogr_lst;
         }
-
+        ///<summary>
+        /// Belirli bir Öğrencinin bilgilerini Geriye Döndüren Metodumuz 
+        /// </summary>
+        /// 
+        /// <returns>List<ogrenci> mevcut tum ogrencileri listeler</returns>
+        public List<ogrenci> ogrenciListesi(ogrenci ogr)
+        {
+            return (from o in ogr_lst where o==ogr select o).ToList() ;
+        }
         public List<char> cinsiyetListesi()
         {
             return cinsiyetler;

@@ -95,7 +95,7 @@ namespace WpfApp_ogrenciOtomasyonu
             lbl_kayitislem.Content = "KAYIT DÜZENLEME";
             dataGrid_ogrler.IsEnabled = false;
             StackPanel_kayitislem.Visibility = Visibility.Visible;
-            StackPanel_kayitislem.DataContext = secilen_ogr;
+            StackPanel_kayitislem.DataContext = secilen_ogr;//ogr.ogrenciListesi(secilen_ogr);
             /*
             ogrenci s_ogr= (ogrenci)dataGrid_ogrler.SelectedItem;
             textBox_okulno.Text = s_ogr.Okulno.ToString();
